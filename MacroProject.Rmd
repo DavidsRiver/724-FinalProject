@@ -1,0 +1,107 @@
+---
+title: '724 Macroeconomic Theory: Investment Adjustment Costs'
+author: "Curtis Aquino & Juan David Rios"
+date: "April 30, 2017"
+output: pdf_document
+---
+
+Solving the standard RBC model 
+
+\begin{align*}
+\max E_0 & \sum^\infty \beta ^t [ \ln c_t + \psi \ln(1 - n_t)\\
+\textrm{s.t.}&\\
+c_t + i_t&= y_t\\ 
+y_t &= A_t k^\alpha n_t^{1-\alpha} \\
+k_{t+1} &= (1-\delta)k_t + i_t\\
+\ln A_{t+1} &= \rho \ln A_t + \epsilon_{t+1}\\
+\epsilon_{t+1} & ~ iid(0, \sigma^2_\epsilon)\\
+k_0 \textrm{ and } A_0 & \textrm{ are given and } > 0
+\end{align*}
+
+with $\psi > 0,\beta,\delta,\rho \in (0,1)$
+
+The dynamic equillibirum of this economy followsis described by: 
+
+
+This doesn't work says intial values are too far from steady state 
+
+```{}
+close all
+// Simple RBC Model 
+
+var y, c, n, k, A; 
+
+varexo e;
+
+parameters beta, delta, rho, alpha, psi;
+
+alpha   = 0.36;
+rho     = 0.95; 
+beta    = 0.99;
+psi     = 1.95;
+delta   = 0.025;
+
+model;
+1/c         = (1/c(+1)) * beta * alpha*A*k^(alpha-1) *n^(1-alpha);
+psi/(1-n)   = (1/c)*(1-alpha)*A*k^alpha*n^(-alpha);
+y           = alpha*A*k^(alpha)*n^(1-alpha);
+k           = y - c + (1-delta)*k(-1);
+A           = rho* A(-1) + e;
+end;
+
+initval;
+c = -1;
+n = 0.5;
+k = 1.08068253095672;
+A = 0.80359242014163;
+end;
+
+shocks;
+var e; stderr 0.009;
+end;
+
+stoch_simul;
+```
+
+Solving the investment adjustment costs model. The model will follow the same specification as "Shapiro (86) The Dynamic Demand for Capital and Labor"
+This model has a change in the production in that changing the capital stock now incurss costs. 
+
+$\ln(y_t) = \ln(f(k_t,n_t,A_t))  - \frac{\alpha_k}{2}[\frac{\delta k_t}{k_{t-1}}]^2$
+
+2. Solve standard RBC model and Investment adjustmnet costs model. 
+
+
+3.  The  project  is  a  quantitative  exercise  comparing  the  properties  of  two  models.   It  is  not  a  momentmatching exercise.
+
+4.  The  project  report  must  not  exceed  10  pages  in  length  (margins  of  one  inch  and  line  spacing=1.5)including references but excluding tables and graphs.
+
+5.  The project report must include the following parts:
+
+  (a)  A brief introduction outlining the models being compared (no equations though) and providingan overview of the analysis and results.
+  
+  (b)  A careful description of the two models used in the analysis and a brief discussion of the methodused to solve and simulate the model.
+  
+  (c)  An analysis that focuses on comparing the two models.  In your analysis,  you must produce atable  of  moments  reporting  standard  deviations,  standard  deviations  relative  to  the  standarddeviation of output,  autocorrelations,  and correlations with output for all variables of interest.The analysis should highlight the di erences in the moments of the two models and should provideexplanations for these di erences.  What are the key economic forces that drive the results.  Oftenimpulse  response  graphs  help  to  clarify  your  explanations  and  illustrate  the  economics  of  thesystem.  Check the sensitivity of your results to key parameter choices.  Compare your results toone published article using related models.
+  
+  (d)  A brief conclusion.
+  
+6.  Together with your report, you must submit one matlab program and an appendix that includes the derivation of the  first-order conditions of the models being solved and the derivation of the steady-state.  Note that this appendix can be handwritten.  This appendix is due immediately before studentpresentations begin.
+
+To implement in MATLAB after dynare is installed. Make sure WD has the file
+
+``` {}
+dynare rbc2shockns.mod
+```
+
+
+Random Coefficient model introduces hetrogeneity into model by adding errors to slopes and intercept at any level ( inividual, group, time, ) Broad class of modedls. OLS already Random coefficients, with random = 0. Give different marginal effects. Capture more varietaion in DATA but increasing variance data. VAR[Beta + random part] > VAR[Beta]. 
+
+
+Fixed Effects and Random Effects for panel data, if you think an inividual effect you include an alpha. Random effects assumes indivdual effect is random, can difference the data over time. Fixed effects a variable for each observation.
+
+Survival Analysis: Basically looks at time to an event happening. Decay function kind of. 
+
+VAR <- vector auto regression y = x_{t-1} + \epsilon 
+x = x_{t-1} + \epsilon 
+
+
