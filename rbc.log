@@ -1,0 +1,91 @@
+Starting Dynare (version 4.4.3).
+Starting preprocessing of the model file ...
+Found 6 equation(s).
+Evaluating expressions...done
+Computing static model derivatives:
+ - order 1
+Computing dynamic model derivatives:
+ - order 1
+ - order 2
+Processing outputs ...done
+Preprocessing completed.
+Starting MATLAB/Octave computing.
+
+STEADY-STATE RESULTS:
+
+y 		 -0.0328374
+c 		 -0.0957945
+i 		 -2.82937
+k 		 1.08257
+n 		 -0.776444
+A 		 0
+
+ans =
+
+     3
+
+
+MODEL SUMMARY
+
+  Number of variables:         6
+  Number of stochastic shocks: 1
+  Number of state variables:   2
+  Number of jumpers:           3
+  Number of static variables:  2
+
+
+MATRIX OF COVARIANCE OF EXOGENOUS SHOCKS
+
+Variables       e    
+e            0.008100
+
+POLICY AND TRANSITION FUNCTIONS
+                                       y               c               i               k               n               A
+Constant                   -0.032698       -0.096037       -2.823357        1.082694       -0.776212               0
+(correction)                0.000139       -0.000243        0.006015        0.000120        0.000232               0
+k(-1)                       0.271310        0.619798       -5.091185        0.878168       -0.214484               0
+A(-1)                       1.062456        0.348719       12.045244        0.240924        0.437426        0.800000
+e                           1.328070        0.435898       15.056555        0.301155        0.546783        1.000000
+k(-1),k(-1)                -0.026691        0.034586      -16.282155        0.037963       -0.044485               0
+A(-1),k(-1)                 0.098495       -0.105081       65.953652       -0.118982        0.164159               0
+A(-1),A(-1)                -0.088101        0.067877      -66.718478        0.087497       -0.146834               0
+e,e                        -0.137657        0.106058     -104.247621        0.136713       -0.229429               0
+k(-1),e                     0.123119       -0.131352       82.442065       -0.148728        0.205199               0
+A(-1),e                    -0.220251        0.169694     -166.796194        0.218741       -0.367086               0
+
+
+APROXIMATED THEORETICAL MOMENTS
+
+VARIABLE      MEAN    STD. DEV.   VARIANCE 
+y             -0.0295     0.2379     0.0566
+c             -0.0819     0.1837     0.0337
+i             -4.5989     1.9052     3.6299
+k              1.1025     0.2259     0.0510
+n             -0.7842     0.0693     0.0048
+A              0.0000     0.1500     0.0225
+
+
+
+APPROXIMATED MATRIX OF CORRELATIONS
+
+Variables      y       c       i       k       n       A   
+y            1.0000  0.8874  0.7296  0.8170  0.6603  0.9761
+c            0.8874  1.0000  0.3322  0.9908  0.2396  0.7660
+i            0.7296  0.3322  1.0000  0.2017  0.9953  0.8608
+k            0.8170  0.9908  0.2017  1.0000  0.1063  0.6722
+n            0.6603  0.2396  0.9953  0.1063  1.0000  0.8077
+A            0.9761  0.7660  0.8608  0.6722  0.8077  1.0000
+
+
+
+APPROXIMATED COEFFICIENTS OF AUTOCORRELATION
+
+Order      1       2       3       4       5   
+y        0.8646  0.7483  0.6485  0.5625  0.4884
+c        0.9736  0.9314  0.8790  0.8208  0.7599
+i        0.6945  0.4630  0.2890  0.1598  0.0651
+k        0.9857  0.9516  0.9045  0.8493  0.7899
+n        0.6905  0.4562  0.2805  0.1503  0.0551
+A        0.8000  0.6400  0.5120  0.4096  0.3277
+Total computing time : 0h00m10s
+Note: warning(s) encountered in MATLAB/Octave code

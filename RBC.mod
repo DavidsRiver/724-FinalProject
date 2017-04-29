@@ -36,6 +36,6 @@ var e =  sigmae^2;
 end;
 
 steady; 
-3
+
 stoch_simul;
 
