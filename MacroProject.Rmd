@@ -5,7 +5,51 @@ date: "April 30, 2017"
 output: pdf_document
 ---
 
-Solving the standard RBC model 
+# Introduction 
+
+- Outline models being compared ( no equations)
+- Overview of analysis and results 
+
+# Description 
+
+- Description of standard RBC model
+- Description of investment adjustment costs 
+
+- Methods used to solve RBC model
+- Methods used to solve investment adjustment costs 
+
+- How was RBC model simulated
+- How was investmnet adjustment costs model simulated
+
+# Analysis 
+
+- Compare the two models 
+- table of moments reporting sd, sd relative to Y, and autocorrelations,
+correlation with output for all variables of interest. 
+- Highlight difference in the moments of the two models 
+- What is causing these differences? 
+- Key economic forces driving these results
+- Use impulse response functions to clarify explanations and illustrate economics of the system. 
+- Check sensitivity of results to key parameter choices
+- Compare your results to one published article using related models. 
+
+# Conclusion
+
+- A brief conclusion
+
+# Matlab Code
+
+- Provide matlab code
+
+# Appendix 
+
+- Derivations of first order conditions 
+- Derivation of steady state. 
+
+# Rough Work
+
+
+RBC model 
 
 \begin{align*}
 \max E_0 & \sum^\infty \beta ^t [ \ln c_t + \psi \ln(1 - n_t)\\
@@ -15,53 +59,16 @@ y_t &= A_t k^\alpha n_t^{1-\alpha} \\
 k_{t+1} &= (1-\delta)k_t + i_t\\
 \ln A_{t+1} &= \rho \ln A_t + \epsilon_{t+1}\\
 \epsilon_{t+1} & ~ iid(0, \sigma^2_\epsilon)\\
-k_0 \textrm{ and } A_0 & \textrm{ are given and } > 0
+k_0 \textrm{ and } A_0  \textrm{ are given and } > 0
 \end{align*}
 
 with $\psi > 0,\beta,\delta,\rho \in (0,1)$
 
-The dynamic equillibirum of this economy followsis described by: 
+Solve through optimal control
 
 
 This doesn't work says intial values are too far from steady state 
 
-```{}
-close all
-// Simple RBC Model 
-
-var y, c, n, k, A; 
-
-varexo e;
-
-parameters beta, delta, rho, alpha, psi;
-
-alpha   = 0.36;
-rho     = 0.95; 
-beta    = 0.99;
-psi     = 1.95;
-delta   = 0.025;
-
-model;
-1/c         = (1/c(+1)) * beta * alpha*A*k^(alpha-1) *n^(1-alpha);
-psi/(1-n)   = (1/c)*(1-alpha)*A*k^alpha*n^(-alpha);
-y           = alpha*A*k^(alpha)*n^(1-alpha);
-k           = y - c + (1-delta)*k(-1);
-A           = rho* A(-1) + e;
-end;
-
-initval;
-c = -1;
-n = 0.5;
-k = 1.08068253095672;
-A = 0.80359242014163;
-end;
-
-shocks;
-var e; stderr 0.009;
-end;
-
-stoch_simul;
-```
 
 Solving the investment adjustment costs model. The model will follow the same specification as "Shapiro (86) The Dynamic Demand for Capital and Labor"
 This model has a change in the production in that changing the capital stock now incurss costs. 
@@ -86,22 +93,3 @@ $\ln(y_t) = \ln(f(k_t,n_t,A_t))  - \frac{\alpha_k}{2}[\frac{\delta k_t}{k_{t-1}}
   (d)  A brief conclusion.
   
 6.  Together with your report, you must submit one matlab program and an appendix that includes the derivation of the  first-order conditions of the models being solved and the derivation of the steady-state.  Note that this appendix can be handwritten.  This appendix is due immediately before studentpresentations begin.
-
-To implement in MATLAB after dynare is installed. Make sure WD has the file
-
-``` {}
-dynare rbc2shockns.mod
-```
-
-
-Random Coefficient model introduces hetrogeneity into model by adding errors to slopes and intercept at any level ( inividual, group, time, ) Broad class of modedls. OLS already Random coefficients, with random = 0. Give different marginal effects. Capture more varietaion in DATA but increasing variance data. VAR[Beta + random part] > VAR[Beta]. 
-
-
-Fixed Effects and Random Effects for panel data, if you think an inividual effect you include an alpha. Random effects assumes indivdual effect is random, can difference the data over time. Fixed effects a variable for each observation.
-
-Survival Analysis: Basically looks at time to an event happening. Decay function kind of. 
-
-VAR <- vector auto regression y = x_{t-1} + \epsilon 
-x = x_{t-1} + \epsilon 
-
-
