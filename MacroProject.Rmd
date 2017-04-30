@@ -61,7 +61,7 @@ k_0 \textrm{ and } A_0 & \textrm{ are given and } > 0
 \end{align*}
 with $\psi > 0,\beta,\delta,\rho \in (0,1)$
 
-**What are the choice variables**
+Choice variables being consumption, captial in the next period, investment, labour supply and leisure. Have subtituted out leisure for $(1-n_t)$.
 
 Solve through optimal control. Using the constraints for $y_t$ and $k_t$
 \begin{align*}
@@ -81,9 +81,29 @@ L &=  E_0 \sum^\infty_{t=0} \beta ^t [ \ln (c_t) + \psi \ln(1 - n_t)]  + \beta^t
 
 ** Need to solve for steady state**
 
-Solving the investment adjustment costs model. The model will follow the same specification as "Shapiro (86) The Dynamic Demand for Capital and Labor"
-This model has a change in the production in that changing the capital stock now incurss costs. 
+## Investment adjustment cost model 
 
-$\ln(y_t) = \ln(f(k_t,n_t,A_t))  - \frac{\alpha_k}{2}[\frac{\delta k_t}{k_{t-1}}]^2$
+This model introduces adjustment cost to changing the level of investment between periods. **Rational for introducing investment adjustment costs**?. 
+
+Critical addition is in the capital accumulation equation.
+
+$k_{t+1} = \theta(i_t,i_{t-1})i)i_t + (1-\delta)k_t$
+
+Solve for the steady state of a quadratic cost model as proposed by *Chrsitiansen 2005*. Where theta reflects the adjustment costs associated with changing the level of investment. 
+
+$\theta = \frac{i_t}{i_{t-1}}$
+
+Using the same preferences as RBC **Not so sure this is the model we want to use**
+
+\begin{align*}
+\max E_0 & \sum^\infty_{t=0} \beta ^t [ \ln (c_t) + \psi \ln(1 - n_t)] \textrm{      s.t.}\\
+ y_t &= c_t + i_t \\
+ y_t &= A_t k_t^\alpha n_t^{1-\alpha}\\
+ k_{t+1} &= [1- \theta(\frac{i_t}{i_{t-1}})]i_t + (1-\delta)k_t \\ 
+ \ln (A_{t+1}) &= \rho \ln (A_t) + \epsilon_{t+1} \textrm{   where     }\epsilon_{t+1} \sim iid(0, \sigma^2_\epsilon)\\
+k_0 \textrm{ and } A_0 & \textrm{ are given and } > 0
+\end{align*}
+
+
 
 

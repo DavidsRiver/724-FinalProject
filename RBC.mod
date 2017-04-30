@@ -15,7 +15,7 @@ psi     = 1;
 
 model;
 1/exp(c)        =  beta*(1/exp(c(+1)))*(alpha*exp(A(+1))*exp(k)^(alpha-1)*exp(n(+1))^(1-alpha) + (1-delta));
-psi/(1-exp(n))   =  (1/exp(c))  * ((1-alpha)*exp(A)*exp(k)^(alpha)*exp(n)^(-alpha));
+psi/(1-exp(n))  =  (1/exp(c))  * ((1-alpha)*exp(A)*exp(k)^(alpha)*exp(n)^(-alpha));
 exp(y)          = exp(A)*(exp(k(-1))^(alpha))*exp(n)^(1-alpha);
 exp(y)          = exp(c) + exp(k)  - (1-delta)*exp(k(-1));
 A               = rho*A(-1) + e;
