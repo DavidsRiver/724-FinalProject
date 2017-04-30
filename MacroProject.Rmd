@@ -87,11 +87,10 @@ This model introduces adjustment cost to changing the level of investment betwee
 
 Critical addition is in the capital accumulation equation.
 
-$k_{t+1} = \theta(i_t,i_{t-1})i)i_t + (1-\delta)k_t$
+$k_{t+1} =i_t - \theta(\frac{i_t}{i_{t-1}})i_t + (1-\delta)k_t$
 
-Solve for the steady state of a quadratic cost model as proposed by *Chrsitiansen 2005*. Where theta reflects the adjustment costs associated with changing the level of investment. 
+Where $\theta$ represents the cost of adjusting capital and is a function of both current period investment and previous periods investmnet.
 
-$\theta = \frac{i_t}{i_{t-1}}$
 
 Using the same preferences as RBC **Not so sure this is the model we want to use**
 
