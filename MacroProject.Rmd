@@ -83,25 +83,28 @@ L &=  E_0 \sum^\infty_{t=0} \beta ^t [ \ln (c_t) + \psi \ln(1 - n_t)]  + \beta^t
 
 ## Investment adjustment cost model 
 
-This model introduces adjustment cost to changing the level of investment between periods. **Rational for introducing investment adjustment costs**?. 
+The investment adjustment cost RBC model introduces frictions to changing the level of investment between periods. We will be using the specification for the capital accumulation equation as proposed by Christiano, Eichenbaum and Evans (2005). The capital accumulation equation changes such that next periods capital is equal to the capital from the previous period that did not depreciate and an investment function that translates current investment as well previous investment levels into next periods capital stock. 
 
-Critical addition is in the capital accumulation equation.
+- **Rationale for introducing investment adjustment costs**
 
-$k_{t+1} =i_t - \theta(\frac{i_t}{i_{t-1}})i_t + (1-\delta)k_t$
+The capital accumulation equation becomes: $k_{t+1} = k_t(1+\delta) + f(i_t,i_{t-1})$
 
-Where $\theta$ represents the cost of adjusting capital and is a function of both current period investment and previous periods investmnet.
+Christiano, Eichenbaum and Evans (2005) prescribe this functional form where $f(i_t,i_{t-1}) = \bigg [ 1 - S(\frac{i_t}{i_{t-1}}) \bigg] i_t$ and $S(1) = 0$. Thus ensuring that when $i_t = i_{t-1}$ the capital accumulaton equation reverts back to our basic RBC model. 
 
+Using the same preferences as standard RBC model to ensure
 
-Using the same preferences as RBC **Not so sure this is the model we want to use**
+- **Not so sure this is the model we want to use**
 
 \begin{align*}
 \max E_0 & \sum^\infty_{t=0} \beta ^t [ \ln (c_t) + \psi \ln(1 - n_t)] \textrm{      s.t.}\\
  y_t &= c_t + i_t \\
  y_t &= A_t k_t^\alpha n_t^{1-\alpha}\\
- k_{t+1} &= [1- \theta(\frac{i_t}{i_{t-1}})]i_t + (1-\delta)k_t \\ 
+ k_{t+1} &= [ 1 - S(\frac{i_t}{i_{t-1}})]i_t + (1-\delta)k_t \\ 
  \ln (A_{t+1}) &= \rho \ln (A_t) + \epsilon_{t+1} \textrm{   where     }\epsilon_{t+1} \sim iid(0, \sigma^2_\epsilon)\\
 k_0 \textrm{ and } A_0 & \textrm{ are given and } > 0
 \end{align*}
+
+**include functional form assumptions of S**
 
 \begin{align*}
 L = E_0  \sum^\infty_{t=0} & \beta ^t [ \ln (c_t) + \psi \ln(1 - n_t)] \\
@@ -112,6 +115,6 @@ L = E_0  \sum^\infty_{t=0} & \beta ^t [ \ln (c_t) + \psi \ln(1 - n_t)] \\
 \frac{\partial L}{\partial n_t} &: \frac{\psi}{1-n_t} = \lambda_t[(1-\alpha)\frac{y_t}{n_t}] \\
 \frac{\partial L}{\partial i_t} &: \lambda_t = \Lambda_t[1 - \frac{\partial \theta_t(i_t,i_{t-1})}{\partial i_t}] + \Lambda_{t+1}\beta[\frac{\partial \theta_{t+1}(i_{t+1},i_t)}{\partial i_t}]\\
 \frac{\partial L}{\partial k_{t+1}} &: \Lambda_t = \lambda_{t+1} \beta [\alpha \frac{y_{t+1}}{k_{t+1}} + (1-\delta)]\\
-\end{align*}
+a\end{align*}
 
 
