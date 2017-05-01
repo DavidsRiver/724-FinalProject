@@ -78,39 +78,40 @@ L &=  E_0 \sum^\infty_{t=0} \beta ^t [ \ln (c_t) + \psi \ln(1 - n_t)]  + \beta^t
 \frac{\partial L}{\partial k_{t+1}} &: \lambda_t = \lambda_{t+1} \beta [\alpha \frac{y_{t+1}}{k_{t+1}} + (1-\delta)]\\
 &:  \frac{1}{c_t} =  \frac{1}{c_{t+1}} \beta  [\alpha \frac{y_{t+1}}{k_{t+1}} + (1-\delta)] 
 \end{align*}
-
-** Need to solve for steady state**
+-**Need to solve for steady state**
 
 ## Investment adjustment cost model 
 
-The investment adjustment cost RBC model introduces frictions to changing the level of investment between periods. We will be using the specification for the capital accumulation equation as proposed by Christiano, Eichenbaum and Evans (2005). The capital accumulation equation changes such that next periods capital is equal to the capital from the previous period that did not depreciate and an investment function that translates current investment as well previous investment levels into next periods capital stock. 
+The investment adjustment cost RBC model introduces frictions to changing the level of investment between periods. We will be using the specification for the capital accumulation equation as proposed by Christiano, Eichenbaum and Evans (2001). The capital accumulation equation changes such that next periods capital is equal to the capital from the previous period that did not depreciate and an investment function that translates current investment as well previous investment levels into next periods capital stock. 
 
 - **Rationale for introducing investment adjustment costs**
 
 The capital accumulation equation becomes: $k_{t+1} = k_t(1+\delta) + f(i_t,i_{t-1})$
 
-Christiano, Eichenbaum and Evans (2005) prescribe this functional form where $f(i_t,i_{t-1}) = \bigg [ 1 - S(\frac{i_t}{i_{t-1}}) \bigg] i_t$ and $S(1) = 0$. Thus ensuring that when $i_t = i_{t-1}$ the capital accumulaton equation reverts back to our basic RBC model. 
+Christiano, Eichenbaum and Evans (2005) prescribe this functional form where $f(i_t,i_{t-1}) = \bigg [ 1 - S(\frac{i_t}{i_{t-1}}) \bigg] i_t$ and $S(1) = 0$. Thus ensuring that when $i_t = i_{t-1}$ the capital accumulaton equation reverts back to the one in our basic RBC model. 
 
-Using the same preferences as standard RBC model to ensure
+Using the same preferences as standard RBC model to ensure the changes in paramter valeus and impulse response functions is only driven by the changes in the capital accumulation equation.
 
-- **Not so sure this is the model we want to use**
+We will now use the quadratic investment adjustment term proposed by Schmitt-Groche & Uribe (2005) where 
+
+$S(\frac{i_t}{i_{t-1}}) = \frac{\kappa}{2}\bigg[\frac{i_t}{i_{t-1}} -1 \bigg]^2$ Where $\kappa$ is non-negative and represents the cost of adjusting captial.
 
 \begin{align*}
 \max E_0 & \sum^\infty_{t=0} \beta ^t [ \ln (c_t) + \psi \ln(1 - n_t)] \textrm{      s.t.}\\
  y_t &= c_t + i_t \\
  y_t &= A_t k_t^\alpha n_t^{1-\alpha}\\
- k_{t+1} &= [ 1 - S(\frac{i_t}{i_{t-1}})]i_t + (1-\delta)k_t \\ 
+ k_{t+1} &= [ 1 - \frac{\kappa}{2}\bigg[\frac{i_t}{i_{t-1}} -1 \bigg]^2]i_t + (1-\delta)k_t \\ 
  \ln (A_{t+1}) &= \rho \ln (A_t) + \epsilon_{t+1} \textrm{   where     }\epsilon_{t+1} \sim iid(0, \sigma^2_\epsilon)\\
-k_0 \textrm{ and } A_0 & \textrm{ are given and } > 0
+k_0 \textrm{ and } A_0 & \textrm{ are given and } > 0 \\
+\kappa \ge 0 
 \end{align*}
-
-**include functional form assumptions of S**
-
+Solving through optimal control  
 \begin{align*}
 L = E_0  \sum^\infty_{t=0} & \beta ^t [ \ln (c_t) + \psi \ln(1 - n_t)] \\
 & + \beta ^t \lambda_t [ A_tk_t^\alpha n_t^{1-\alpha} - c -i ]  \\
-& + \beta ^t \Lambda_t [i_t - \theta_t(i_t,i_{t-1}) + (1-\delta)k_t - k_{t+1}]
-\\\\
+& + \beta ^t \Lambda_t [i_t - S(\frac{i_t}{i_{t-1}})i_t) + (1-\delta)k_t - k_{t+1}]
+\\\\ 
+\textrm{need to rewrite these}
 \frac{\partial L}{\partial c_t} &: \frac{1}{c_t} = \lambda_t\\
 \frac{\partial L}{\partial n_t} &: \frac{\psi}{1-n_t} = \lambda_t[(1-\alpha)\frac{y_t}{n_t}] \\
 \frac{\partial L}{\partial i_t} &: \lambda_t = \Lambda_t[1 - \frac{\partial \theta_t(i_t,i_{t-1})}{\partial i_t}] + \Lambda_{t+1}\beta[\frac{\partial \theta_{t+1}(i_{t+1},i_t)}{\partial i_t}]\\
@@ -118,3 +119,8 @@ L = E_0  \sum^\infty_{t=0} & \beta ^t [ \ln (c_t) + \psi \ln(1 - n_t)] \\
 a\end{align*}
 
 
+Schmitt-Grohé, Stephanie, and Martin Uribe. "Optimal fiscal and monetary policy in a medium-scale macroeconomic model." NBER Macroeconomics Annual 20 (2005): 383-425.
+
+
+ Del Negro and Schorfheide (2008),
+Fern´andez-Villaverde (2010), and Gerali et al. (2010) all USE SAME CAPITAL adjdustment model as ours might want to check them out. 
