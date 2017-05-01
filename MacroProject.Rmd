@@ -109,14 +109,14 @@ Solving through optimal control
 \begin{align*}
 L = E_0  \sum^\infty_{t=0} & \beta ^t [ \ln (c_t) + \psi \ln(1 - n_t)] \\
 & + \beta ^t \lambda_t [ A_tk_t^\alpha n_t^{1-\alpha} - c -i ]  \\
-& + \beta ^t \Lambda_t [i_t - S(\frac{i_t}{i_{t-1}})i_t) + (1-\delta)k_t - k_{t+1}]
-\\\\ 
-\textrm{need to rewrite these}
+& + \beta ^t \Lambda_t \bigg[ [ 1 - \frac{\kappa}{2}[\frac{i_t}{i_{t-1}} -1]^2]i_t  + (1-\delta)k_t - k_{t+1} \bigg]
+\\\\
 \frac{\partial L}{\partial c_t} &: \frac{1}{c_t} = \lambda_t\\
 \frac{\partial L}{\partial n_t} &: \frac{\psi}{1-n_t} = \lambda_t[(1-\alpha)\frac{y_t}{n_t}] \\
-\frac{\partial L}{\partial i_t} &: \lambda_t = \Lambda_t[1 - \frac{\partial \theta_t(i_t,i_{t-1})}{\partial i_t}] + \Lambda_{t+1}\beta[\frac{\partial \theta_{t+1}(i_{t+1},i_t)}{\partial i_t}]\\
-\frac{\partial L}{\partial k_{t+1}} &: \Lambda_t = \lambda_{t+1} \beta [\alpha \frac{y_{t+1}}{k_{t+1}} + (1-\delta)]\\
-a\end{align*}
+\frac{\partial L}{\partial k_{t+1}} &: \Lambda_t = \beta[\lambda_{t+1}(\alpha \frac{y_{t+1}}{k_{t+1}}) + \Lambda_{t+1}(1-\delta)] \\
+\frac{\partial L}{\partial i_t} &: \lambda_t = \Lambda_t[1 - \frac{\kappa}{2}(\frac{i_t}{i_{t-1}} - 1)^2 - \kappa[\frac{i_t}{i_{t-1}} - 1] \frac{i_t}{i_{t-1}}]   \\
+& + \beta \Lambda_{t+1}[\kappa [\frac{i_{t+1}}{i_t} -1] (\frac{i_{t+1}}{i_t})^2]
+\end{align*}
 
 
 Schmitt-Grohé, Stephanie, and Martin Uribe. "Optimal fiscal and monetary policy in a medium-scale macroeconomic model." NBER Macroeconomics Annual 20 (2005): 383-425.

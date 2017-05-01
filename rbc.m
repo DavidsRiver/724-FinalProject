@@ -102,17 +102,17 @@ M_.NNZDerivatives(1) = 23;
 M_.NNZDerivatives(2) = 50;
 M_.NNZDerivatives(3) = -1;
 close all
-M_.params( 1 ) = 0.4;
+M_.params( 1 ) = 0.33;
 alpha = M_.params( 1 );
-M_.params( 2 ) = 0.9;
+M_.params( 2 ) = 0.99;
 beta = M_.params( 2 );
-M_.params( 3 ) = 0.02;
+M_.params( 3 ) = 0.025;
 delta = M_.params( 3 );
-M_.params( 4 ) = 0.8;
+M_.params( 4 ) = 0.95;
 rho = M_.params( 4 );
-M_.params( 6 ) = 0.09;
+M_.params( 6 ) = 0.01;
 sigmae = M_.params( 6 );
-M_.params( 5 ) = 0.75;
+M_.params( 5 ) = 1;
 psi = M_.params( 5 );
 %
 % INITVAL instructions
@@ -137,7 +137,6 @@ make_ex_;
 M_.exo_det_length = 0;
 M_.Sigma_e(1, 1) = M_.params(6)^2;
 steady;
-3
 var_list_=[];
 info = stoch_simul(var_list_);
 save('rbc_results.mat', 'oo_', 'M_', 'options_');
