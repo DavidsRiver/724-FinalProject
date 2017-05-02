@@ -2,22 +2,21 @@ Starting Dynare (version 4.4.3).
 Starting preprocessing of the model file ...
 Found 6 equation(s).
 Evaluating expressions...done
-Computing static model derivatives:
+bComputing static model derivatives:
  - order 1
 Computing dynamic model derivatives:
  - order 1
- - order 2
 Processing outputs ...done
 Preprocessing completed.
 Starting MATLAB/Octave computing.
 
 STEADY-STATE RESULTS:
 
-y 		 0.342091
-c 		 0.0741647
-i 		 -1.10593
-k 		 2.58295
-n 		 -0.761617
+y 		 -0.615979
+c 		 -0.839061
+i 		 -2.22566
+k 		 1.46322
+n 		 -1.64006
 A 		 0
 
 MODEL SUMMARY
@@ -32,76 +31,46 @@ MODEL SUMMARY
 MATRIX OF COVARIANCE OF EXOGENOUS SHOCKS
 
 Variables       e    
-e            0.000100
+e            0.000052
 
 POLICY AND TRANSITION FUNCTIONS
                                        y               c               i               k               n               A
-Constant                    0.342112        0.074130       -1.105725        2.582959       -0.761587               0
-(correction)                0.000020       -0.000035        0.000200        0.000005        0.000030               0
-k(-1)                       0.200119        0.547824       -0.931545        0.951711       -0.193853               0
-A(-1)                       1.288743        0.375489        4.261082        0.106527        0.505586        0.950000
-e                           1.356571        0.395251        4.485350        0.112134        0.532196        1.000000
-k(-1),k(-1)                -0.027689        0.025408       -1.037574        0.019531       -0.041326               0
-A(-1),k(-1)                 0.130839       -0.097180        5.270154       -0.068864        0.195283               0
-A(-1),A(-1)                -0.138418        0.058099       -6.552668        0.057470       -0.206594               0
-e,e                        -0.153371        0.064376       -7.260574        0.063678       -0.228913               0
-k(-1),e                     0.137726       -0.102295        5.547530       -0.072488        0.205561               0
-A(-1),e                    -0.291406        0.122315      -13.795090        0.120989       -0.434934               0
+Constant                   -0.615979       -0.839061       -2.225663        1.463216       -1.640060               0
+k(-1)                       0.080740        0.520207       -1.677670        0.933058       -0.372030               0
+A(-1)                       1.527738        0.540172        5.479215        0.136980        0.832445        0.970000
+e                           1.574988        0.556879        5.648675        0.141217        0.858190        1.000000
 
 
-APROXIMATED THEORETICAL MOMENTS
+MOMENTS OF SIMULATED VARIABLES
 
-VARIABLE      MEAN    STD. DEV.   VARIANCE 
-y              0.3422     0.0511     0.0026
-c              0.0746     0.0383     0.0015
-i             -1.1105     0.1161     0.0135
-k              2.5838     0.0521     0.0027
-n             -0.7619     0.0125     0.0002
-A              0.0000     0.0320     0.0010
-
-
-
-APPROXIMATED MATRIX OF CORRELATIONS
-
-Variables      y       c       i       k       n       A   
-y            1.0000  0.9106  0.8959  0.8142  0.7117  0.9888
-c            0.9106  1.0000  0.6321  0.9814  0.3577  0.8388
-i            0.8959  0.6321  1.0000  0.4714  0.9497  0.9521
-k            0.8142  0.9814  0.4714  1.0000  0.1716  0.7185
-n            0.7117  0.3577  0.9497  0.1716  1.0000  0.8085
-A            0.9888  0.8388  0.9521  0.7185  0.8085  1.0000
+VARIABLE      MEAN    STD. DEV.   VARIANCE   SKEWNESS   KURTOSIS 
+y           -0.649653   0.032873   0.001081   0.094937  -1.111506
+c           -0.865305   0.028296   0.000801   0.183199  -1.626203
+i           -2.289065   0.079599   0.006336  -0.015488  -0.192274
+k            1.433199   0.037162   0.001381   0.146307  -1.674047
+n           -1.646277   0.012129   0.000147   0.086817  -0.201104
+A           -0.019885   0.019470   0.000379   0.072609  -1.003723
 
 
+CORRELATION OF SIMULATED VARIABLES
 
-APPROXIMATED COEFFICIENTS OF AUTOCORRELATION
+VARIABLE      y       c       i       k       n       A   
+y           1.0000  0.9002  0.7850  0.7811  0.5107  0.9978
+c           0.9002  1.0000  0.4369  0.9751  0.0853  0.8695
+i           0.7850  0.4369  1.0000  0.2263  0.9335  0.8242
+k           0.7811  0.9751  0.2263  1.0000 -0.1380  0.7381
+n           0.5107  0.0853  0.9335 -0.1380  1.0000  0.5663
+A           0.9978  0.8695  0.8242  0.7381  0.5663  1.0000
 
-Order      1       2       3       4       5   
-y        0.9642  0.9294  0.8958  0.8632  0.8317
-c        0.9943  0.9867  0.9775  0.9668  0.9548
-i        0.9223  0.8497  0.7821  0.7191  0.6604
-k        0.9987  0.9952  0.9896  0.9821  0.9730
-n        0.9050  0.8169  0.7353  0.6597  0.5898
-A        0.9500  0.9025  0.8574  0.8145  0.7738
-{Error using checkArgsForHandleToPrint
-Handle input argument contains nonhandle values.
 
-Error in checkArgsForHandleToPrint
+AUTOCORRELATION OF SIMULATED VARIABLES
 
-Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('print>LocalCreatePrintJob', '/Applications/MATLAB_R2016a.app/toolbox/matlab/graphics/print.m', 216)" style="font-weight:bold">print>LocalCreatePrintJob</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2016a.app/toolbox/matlab/graphics/print.m',216,0)">line 216</a>)
-    handles = checkArgsForHandleToPrint(0, varargin{:});
-
-Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('print', '/Applications/MATLAB_R2016a.app/toolbox/matlab/graphics/print.m', 38)" style="font-weight:bold">print</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2016a.app/toolbox/matlab/graphics/print.m',38,0)">line 38</a>)
-    [pj, inputargs] = LocalCreatePrintJob(varargin{:});
-
-Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('dyn_saveas', '/Applications/Dynare/4.4.3/matlab/dyn_saveas.m', 41)" style="font-weight:bold">dyn_saveas</a> (<a href="matlab: opentoline('/Applications/Dynare/4.4.3/matlab/dyn_saveas.m',41,0)">line 41</a>)
-    print(h,'-depsc2',[fname,'.eps'])
-
-Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('stoch_simul', '/Applications/Dynare/4.4.3/matlab/stoch_simul.m', 256)" style="font-weight:bold">stoch_simul</a> (<a href="matlab: opentoline('/Applications/Dynare/4.4.3/matlab/stoch_simul.m',256,0)">line 256</a>)
-                    dyn_saveas(hh,[M_.fname '_IRF_' deblank(tit(i,:))],options_);
-
-Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('rbc', '/Users/David/Desktop/724-FinalProject/rbc.m', 141)" style="font-weight:bold">rbc</a> (<a href="matlab: opentoline('/Users/David/Desktop/724-FinalProject/rbc.m',141,0)">line 141</a>)
-info = stoch_simul(var_list_);
-
-Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('dynare', '/Applications/Dynare/4.4.3/matlab/dynare.m', 180)" style="font-weight:bold">dynare</a> (<a href="matlab: opentoline('/Applications/Dynare/4.4.3/matlab/dynare.m',180,0)">line 180</a>)
-evalin('base',fname) ;
-} 
+VARIABLE      1       2       3       4       5   
+y           0.9301  0.8654  0.8016  0.7695  0.7329
+c           0.9830  0.9679  0.9509  0.9374  0.9225
+i           0.8537  0.7123  0.5726  0.5084  0.4352
+k           0.9935  0.9875  0.9795  0.9704  0.9604
+n           0.8485  0.7007  0.5548  0.4888  0.4127
+A           0.9208  0.8471  0.7748  0.7392  0.6986
+Total computing time : 0h00m05s
+Note: warning(s) encountered in MATLAB/Octave code

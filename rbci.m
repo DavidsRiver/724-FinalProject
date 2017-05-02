@@ -8,13 +8,13 @@ clear all
 tic;
 global M_ oo_ options_ ys0_ ex0_ estimation_info
 options_ = [];
-M_.fname = 'rbc';
+M_.fname = 'rbci';
 %
 % Some global variables initialization
 %
 global_initialization;
 diary off;
-diary('rbc.log');
+diary('rbci.log');
 M_.exo_names = 'e';
 M_.exo_names_tex = 'e';
 M_.exo_names_long = 'e';
@@ -36,6 +36,12 @@ M_.endo_names_long = char(M_.endo_names_long, 'n');
 M_.endo_names = char(M_.endo_names, 'A');
 M_.endo_names_tex = char(M_.endo_names_tex, 'A');
 M_.endo_names_long = char(M_.endo_names_long, 'A');
+M_.endo_names = char(M_.endo_names, 'lambda');
+M_.endo_names_tex = char(M_.endo_names_tex, 'lambda');
+M_.endo_names_long = char(M_.endo_names_long, 'lambda');
+M_.endo_names = char(M_.endo_names, 'omega');
+M_.endo_names_tex = char(M_.endo_names_tex, 'omega');
+M_.endo_names_long = char(M_.endo_names_long, 'omega');
 M_.param_names = 'alpha';
 M_.param_names_tex = 'alpha';
 M_.param_names_long = 'alpha';
@@ -54,11 +60,14 @@ M_.param_names_long = char(M_.param_names_long, 'psi');
 M_.param_names = char(M_.param_names, 'sigmae');
 M_.param_names_tex = char(M_.param_names_tex, 'sigmae');
 M_.param_names_long = char(M_.param_names_long, 'sigmae');
+M_.param_names = char(M_.param_names, 'q');
+M_.param_names_tex = char(M_.param_names_tex, 'q');
+M_.param_names_long = char(M_.param_names_long, 'q');
 M_.exo_det_nbr = 0;
 M_.exo_nbr = 1;
-M_.endo_nbr = 6;
-M_.param_nbr = 6;
-M_.orig_endo_nbr = 6;
+M_.endo_nbr = 8;
+M_.param_nbr = 7;
+M_.orig_endo_nbr = 8;
 M_.aux_vars = [];
 M_.Sigma_e = zeros(1, 1);
 M_.Correlation_matrix = eye(1, 1);
@@ -68,22 +77,24 @@ M_.sigma_e_is_diagonal = 1;
 options_.block=0;
 options_.bytecode=0;
 options_.use_dll=0;
-erase_compiled_function('rbc_static');
-erase_compiled_function('rbc_dynamic');
+erase_compiled_function('rbci_static');
+erase_compiled_function('rbci_dynamic');
 M_.lead_lag_incidence = [
- 0 3 0;
- 0 4 9;
+ 0 4 0;
  0 5 0;
- 1 6 0;
- 0 7 10;
- 2 8 11;]';
-M_.nstatic = 2;
+ 1 6 12;
+ 2 7 0;
+ 0 8 0;
+ 3 9 0;
+ 0 10 13;
+ 0 11 14;]';
+M_.nstatic = 3;
 M_.nfwrd   = 2;
-M_.npred   = 1;
+M_.npred   = 2;
 M_.nboth   = 1;
 M_.nsfwrd   = 3;
-M_.nspred   = 2;
-M_.ndynamic   = 4;
+M_.nspred   = 3;
+M_.ndynamic   = 5;
 M_.equations_tags = {
 };
 M_.static_and_dynamic_models_differ = 0;
@@ -92,14 +103,14 @@ M_.maximum_lag = 1;
 M_.maximum_lead = 1;
 M_.maximum_endo_lag = 1;
 M_.maximum_endo_lead = 1;
-oo_.steady_state = zeros(6, 1);
+oo_.steady_state = zeros(8, 1);
 M_.maximum_exo_lag = 0;
 M_.maximum_exo_lead = 0;
 oo_.exo_steady_state = zeros(1, 1);
-M_.params = NaN(6, 1);
+M_.params = NaN(7, 1);
 M_.NNZDerivatives = zeros(3, 1);
-M_.NNZDerivatives(1) = 23;
-M_.NNZDerivatives(2) = -1;
+M_.NNZDerivatives(1) = 28;
+M_.NNZDerivatives(2) = 51;
 M_.NNZDerivatives(3) = -1;
 close all
 M_.params( 1 ) = 0.33;
@@ -114,6 +125,8 @@ M_.params( 6 ) = 0.0072;
 sigmae = M_.params( 6 );
 M_.params( 5 ) = 3.48;
 psi = M_.params( 5 );
+M_.params( 7 ) = 4.5;
+q = M_.params( 7 );
 %
 % INITVAL instructions
 %
@@ -124,6 +137,8 @@ oo_.steady_state( 4 ) = 3.332204510175204;
 oo_.steady_state( 6 ) = 0;
 oo_.steady_state( 5 ) = (-0.2231435513142097);
 oo_.steady_state( 3 ) = 0.4054651081081644;
+oo_.steady_state( 7 ) = 0.6931471805599453;
+oo_.steady_state( 8 ) = (-0.6931471805599453);
 if M_.exo_nbr > 0;
 	oo_.exo_simul = [ones(M_.maximum_lag,1)*oo_.exo_steady_state'];
 end;
@@ -137,23 +152,20 @@ make_ex_;
 M_.exo_det_length = 0;
 M_.Sigma_e(1, 1) = M_.params(6)^2;
 steady;
-options_.irf = 40;
-options_.order = 1;
-options_.periods = 200;
 var_list_=[];
 info = stoch_simul(var_list_);
-save('rbc_results.mat', 'oo_', 'M_', 'options_');
+save('rbci_results.mat', 'oo_', 'M_', 'options_');
 if exist('estim_params_', 'var') == 1
-  save('rbc_results.mat', 'estim_params_', '-append');
+  save('rbci_results.mat', 'estim_params_', '-append');
 end
 if exist('bayestopt_', 'var') == 1
-  save('rbc_results.mat', 'bayestopt_', '-append');
+  save('rbci_results.mat', 'bayestopt_', '-append');
 end
 if exist('dataset_', 'var') == 1
-  save('rbc_results.mat', 'dataset_', '-append');
+  save('rbci_results.mat', 'dataset_', '-append');
 end
 if exist('estimation_info', 'var') == 1
-  save('rbc_results.mat', 'estimation_info', '-append');
+  save('rbci_results.mat', 'estimation_info', '-append');
 end
 
 

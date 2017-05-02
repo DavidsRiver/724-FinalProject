@@ -7,11 +7,11 @@ varexo e;
 parameters alpha, beta, delta, rho, psi, sigmae;
 
 alpha   = 0.33;
-beta    = 0.99;
+beta    = 0.984;
 delta   = 0.025;
-rho     = 0.95; 
-sigmae  = 0.01;
-psi     = 1; 
+rho     = 0.97; 
+sigmae  = 0.0072;
+psi     = 3.48; 
 
 model;
 1/exp(c)        =  beta*(1/exp(c(+1)))*(alpha*exp(A(+1))*exp(k)^(alpha-1)*exp(n(+1))^(1-alpha) + (1-delta));
@@ -37,5 +37,4 @@ end;
 
 steady; 
 
-stoch_simul;
-
+stoch_simul(order=1,irf=40,periods=200);
